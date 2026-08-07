@@ -1,0 +1,9 @@
+services:
+  blog:
+    image: nginx:alpine
+    container_name: blog
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+    ports:
+      - "8015:80"
+    restart: unless-stopped

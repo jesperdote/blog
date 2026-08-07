@@ -1,5 +1,4 @@
-# The URL the site will be built for; update once the domain is live
-base_url = "https://jesperdote.eu.org"
+base_url = "https://infdxeta.info/blog/"
 title = "stdout"
 description = "Notes from a homelab, mostly things that broke and how I found out why."
 default_language = "en"

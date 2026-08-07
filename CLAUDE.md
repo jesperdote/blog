@@ -14,7 +14,7 @@ Local dev server with live reload (serves at http://localhost:1111):
 docker compose up
 ```
 
-Build (outputs static files to `public/`, gitignored, deployed separately via Netlify - not committed):
+Build (outputs static files to `public/`, gitignored):
 
 ```bash
 docker run --rm -u "$(id -u):$(id -g)" -v "$PWD:/app" --workdir /app \
@@ -29,6 +29,15 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$PWD:/app" --workdir /app \
 ```
 
 There is no separate test suite, linter, or package manager - `check` is the correctness gate.
+
+## Deployment
+
+Self-hosted on a BananaPi device, not Netlify. Jenkins (`deploy-blog` pipeline, agent label
+`bananapi`, see `Jenkinsfile`) pulls this repo, builds it with the `zola build` command above,
+then runs `docker-compose.prod.yml` (`nginx:alpine` serving `public/` on host port `8015`). A
+separate front-proxy repo (`klept-lab/proj`, `front/nginx/default.conf`) proxies
+`https://infdxeta.info/blog/` to that port; a Cloudflare Tunnel on the BananaPi exposes it
+publicly. `base_url` in `config.toml` must stay in sync with that path.
 
 ## Structure
 

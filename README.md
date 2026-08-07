@@ -23,8 +23,14 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$PWD:/app" --workdir /app \
     ghcr.io/getzola/zola:v0.22.1 check
 ```
 
-`build` outputs static files to `public/` (gitignored - deployed separately via
-Netlify, not committed).
+`build` outputs static files to `public/` (gitignored, not committed).
+
+## Deployment
+
+Self-hosted on a BananaPi device via Jenkins (`deploy-blog` pipeline, agent `bananapi`) - see
+`Jenkinsfile` and `docker-compose.prod.yml`. The pipeline builds the site and serves `public/`
+from an `nginx:alpine` container on host port `8015`; a front-proxy on the same box routes
+`https://infdxeta.info/blog/` to it and a Cloudflare Tunnel exposes it publicly.
 
 ## Structure
 
