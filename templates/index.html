@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="recent-posts">
+    {% set posts_section = get_section(path="posts/_index.md") %}
+    {% for page in posts_section.pages | slice(end=10) %}
+    <article class="post-item">
+        <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </article>
+    {% endfor %}
+</section>
+{% endblock content %}
