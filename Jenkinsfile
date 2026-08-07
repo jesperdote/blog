@@ -35,7 +35,13 @@ pipeline {
                     unstash 'site'
                     // BananaPi only has the legacy standalone docker-compose (v1.25.0),
                     // not the docker-compose-plugin ("docker compose") subcommand.
-                    sh 'docker-compose -f docker-compose.prod.yml up -d'
+                    //
+                    // --force-recreate is required, not optional: rm -rf public above
+                    // deletes and recreates the directory (new inode) on every deploy,
+                    // but a container's bind mount stays pinned to the original inode
+                    // it was started with. Without recreating the container, its view
+                    // of /usr/share/nginx/html goes stale/empty and nginx serves 403s.
+                    sh 'docker-compose -f docker-compose.prod.yml up -d --force-recreate'
                 }
             }
         }
