@@ -72,15 +72,15 @@ anything else. The actual artwork is a Gemini generation: Lenovo's "ThinkPad" wo
 styling, with "Pad" swapped for "Cat," one cat draped over the top of the lettering and
 another curled underneath it. One for each of mine.
 
-![The ThinkCat logo](/thinkcat-logo.jpg)
+![The ThinkCat logo](https://infdxeta.info/blog/thinkcat-logo.jpg)
 
-[Download the full-resolution image](/thinkcat-logo.jpg) if you want it for your own
-ThinkPad — no promises it'll fit whatever your particular model's flash utility expects,
-given there's no spec sheet for that either.
+[Download the full-resolution image](https://infdxeta.info/blog/thinkcat-logo.jpg) if you
+want it for your own ThinkPad — no promises it'll fit whatever your particular model's
+flash utility expects, given there's no spec sheet for that either.
 
 Flashed it, rebooted, and there it was — full Lenovo splash screen, logo centered on
 black, "To interrupt normal startup, press Enter" underneath, just with a cat where the
 logo used to be. Small thing, but there's something satisfying about a laptop that
 nobody wrote the instructions for anyway.
 
-<video src="/thinkcat-boot.mp4" controls width="100%"></video>
+<video src="https://infdxeta.info/blog/thinkcat-boot.mp4" controls width="100%"></video>
