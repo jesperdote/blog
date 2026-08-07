@@ -64,6 +64,13 @@ a {
     margin-bottom: 1.5rem;
 }
 
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
 pre {
     background: var(--code-bg);
     padding: 1rem;
