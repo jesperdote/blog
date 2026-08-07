@@ -74,9 +74,9 @@ another curled underneath it. One for each of mine.
 
 ![The ThinkCat logo](https://infdxeta.info/blog/thinkcat-logo.jpg)
 
-[Download the full-resolution image](https://infdxeta.info/blog/thinkcat-logo.jpg) if you
-want it for your own ThinkPad — no promises it'll fit whatever your particular model's
-flash utility expects, given there's no spec sheet for that either.
+[Download the full-resolution image](https://raw.githubusercontent.com/jesperdote/blog/main/static/thinkcat-logo.jpg)
+if you want it for your own ThinkPad — no promises it'll fit whatever your particular
+model's flash utility expects, given there's no spec sheet for that either.
 
 Flashed it, rebooted, and there it was — full Lenovo splash screen, logo centered on
 black, "To interrupt normal startup, press Enter" underneath, just with a cat where the
