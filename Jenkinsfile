@@ -33,7 +33,9 @@ pipeline {
                     sh 'git pull origin main'
                     sh 'rm -rf public'
                     unstash 'site'
-                    sh 'docker compose -f docker-compose.prod.yml up -d'
+                    // BananaPi only has the legacy standalone docker-compose (v1.25.0),
+                    // not the docker-compose-plugin ("docker compose") subcommand.
+                    sh 'docker-compose -f docker-compose.prod.yml up -d'
                 }
             }
         }
