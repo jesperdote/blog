@@ -36,11 +36,22 @@ Self-hosted on a BananaPi device, not Netlify. Jenkins (`deploy-blog` pipeline, 
 `Jenkinsfile`) splits build and deploy across two agents: `vps-host` (amd64) runs `zola build`
 and stashes `public/`, because the official Zola image has no armv7 build and the BananaPi is
 32-bit armv7. `bananapi` then unstashes it and runs `docker-compose.prod.yml` (`nginx:alpine`
-serving `public/` on host port `8015`) - note it's the legacy standalone `docker-compose`
-binary there, not the `docker compose` plugin subcommand used locally. A separate front-proxy
-repo (`klept-lab/proj`, `front/nginx/default.conf`) proxies `https://infdxeta.info/blog/` to
-that port; a Cloudflare Tunnel on the BananaPi exposes it publicly. `base_url` in `config.toml`
-must stay in sync with that path.
+serving `public/` on host port `8015`, with `nginx.conf` mounted in - see below) - note it's
+the legacy standalone `docker-compose` binary there, not the `docker compose` plugin subcommand
+used locally. A separate front-proxy repo (`klept-lab/proj`, `front/nginx/default.conf`)
+proxies `https://infdxeta.info/blog/` to that port; a Cloudflare Tunnel on the BananaPi exposes
+it publicly. `base_url` in `config.toml` must stay in sync with that path.
+
+`nginx.conf` sets `absolute_redirect off` - without it, nginx's own trailing-slash redirects
+(e.g. hitting `/posts` with no trailing slash) come back as absolute URLs built from the
+container's own point of view, which has no idea it's mounted under `/blog/` - dropping both
+the prefix and the `https` scheme. The front-proxy repo's `proxy_redirect / /blog/;` directive
+is the other half of this fix; both sides are required together, see that repo's CLAUDE.md.
+
+The stylesheet link uses `get_url(path="style.css", cachebust=true)` in `base.html`, not a
+plain path - Cloudflare caches `style.css` aggressively (`max-age=14400`), so without a
+content-hash query string that changes on every edit, a CSS change can deploy successfully and
+still be invisible to visitors for hours.
 
 ## Structure
 
@@ -50,6 +61,8 @@ must stay in sync with that path.
 | `content/posts/` | Blog posts, one `.md` file each |
 | `templates/` | Hand-written Tera templates - no third-party theme |
 | `static/style.css` | The entire stylesheet - minimal, dark, monospace, no JS, no web fonts |
+| `static/klept.ico` | Favicon, reused from the `whoami`/devops-profile site for brand consistency |
+| `nginx.conf` | Production nginx config for the `docker-compose.prod.yml` container (see Deployment) |
 
 Template inheritance: `base.html` (header/nav/footer shell) is extended by `index.html` (homepage, latest 10 posts), `section.html` (post listing), and `page.html` (single post). Keep this chain in mind when changing markup - shared structure lives in `base.html` only.
 
