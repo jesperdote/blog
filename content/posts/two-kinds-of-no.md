@@ -34,10 +34,10 @@ inside the repo the rule was supposed to cover.
 The actual bug: in Claude Code's permission patterns, `/some/path/**` isn't an absolute
 filesystem path. A single leading slash means "relative to project root." I'd written the
 real absolute path with one slash, which Claude Code read as a nested subdirectory named
-literally `home/klept/...` that obviously doesn't exist, so nothing ever matched. The
-fix is a second leading slash - `//home/klept/...` - which is the actual "yes, this is a
-real absolute path" syntax. One character, and the difference between "everything denied"
-and "everything works."
+literally `home/user/project/...` that obviously doesn't exist, so nothing ever matched.
+The fix is a second leading slash - `//home/user/project/...` - which is the actual "yes,
+this is a real absolute path" syntax. One character, and the difference between
+"everything denied" and "everything works."
 
 Except then it was too permissive in the other direction. A bare `Write(**)` pattern - no
 anchor at all - let the bot write *anywhere the process could reach*, including a

@@ -78,8 +78,8 @@ anything when it does this. It doesn't have to.
 Checked what `xwaykeyz` actually had open:
 
 ```
-lrwx------ 1 klept klept 64 ... 17 -> /dev/input/event16
-lrwx------ 1 klept klept 64 ... 21 -> /dev/input/event3
+lrwx------ 1 <user> <user> 64 ... 17 -> /dev/input/event16
+lrwx------ 1 <user> <user> 64 ... 21 -> /dev/input/event3
 ```
 
 There it was — the touchpad, held open by the remapper. Its own log around the resume
