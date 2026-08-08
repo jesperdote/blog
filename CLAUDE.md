@@ -32,12 +32,15 @@ There is no separate test suite, linter, or package manager - `check` is the cor
 
 ## Deployment
 
-Self-hosted on a BananaPi device, not Netlify. Jenkins (`deploy-blog` pipeline, agent label
-`bananapi`, see `Jenkinsfile`) pulls this repo, builds it with the `zola build` command above,
-then runs `docker-compose.prod.yml` (`nginx:alpine` serving `public/` on host port `8015`). A
-separate front-proxy repo (`klept-lab/proj`, `front/nginx/default.conf`) proxies
-`https://infdxeta.info/blog/` to that port; a Cloudflare Tunnel on the BananaPi exposes it
-publicly. `base_url` in `config.toml` must stay in sync with that path.
+Self-hosted on a BananaPi device, not Netlify. Jenkins (`deploy-blog` pipeline, see
+`Jenkinsfile`) splits build and deploy across two agents: `vps-host` (amd64) runs `zola build`
+and stashes `public/`, because the official Zola image has no armv7 build and the BananaPi is
+32-bit armv7. `bananapi` then unstashes it and runs `docker-compose.prod.yml` (`nginx:alpine`
+serving `public/` on host port `8015`) - note it's the legacy standalone `docker-compose`
+binary there, not the `docker compose` plugin subcommand used locally. A separate front-proxy
+repo (`klept-lab/proj`, `front/nginx/default.conf`) proxies `https://infdxeta.info/blog/` to
+that port; a Cloudflare Tunnel on the BananaPi exposes it publicly. `base_url` in `config.toml`
+must stay in sync with that path.
 
 ## Structure
 
