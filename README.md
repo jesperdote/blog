@@ -29,8 +29,10 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$PWD:/app" --workdir /app \
 
 Self-hosted on a BananaPi device via Jenkins (`deploy-blog` pipeline, agent `bananapi`) - see
 `Jenkinsfile` and `docker-compose.prod.yml`. The pipeline builds the site and serves `public/`
-from an `nginx:alpine` container on host port `8015`; a front-proxy on the same box routes
-`https://infdxeta.info/blog/` to it and a Cloudflare Tunnel exposes it publicly.
+from an `nginx:alpine` container (config: `nginx.conf`) on host port `8015`; a front-proxy on
+the same box routes `https://infdxeta.info/blog/` to it and a Cloudflare Tunnel exposes it
+publicly. The stylesheet link is cache-busted (`get_url(..., cachebust=true)`) since Cloudflare
+caches `style.css` for 4 hours otherwise.
 
 ## Structure
 
@@ -40,6 +42,8 @@ from an `nginx:alpine` container on host port `8015`; a front-proxy on the same 
 | `content/posts/` | Blog posts, one `.md` file each |
 | `templates/` | Hand-written Tera templates (base/index/section/page) - no third-party theme |
 | `static/style.css` | The entire stylesheet - minimal, dark, monospace, no JS, no web fonts |
+| `static/klept.ico` | Favicon |
+| `nginx.conf` | Production nginx config, mounted into the deploy container |
 
 ## Adding a post
 
