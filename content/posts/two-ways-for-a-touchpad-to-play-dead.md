@@ -1,6 +1,6 @@
 +++
 title = "Two ways for a touchpad to play dead"
-date = 2026-08-07
+date = 2026-08-07T20:07:45
 description = "The built-in touchpad went completely dead after a lid close, and it took two separate, stacked bugs to actually explain why."
 +++
 

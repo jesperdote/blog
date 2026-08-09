@@ -1,6 +1,6 @@
 +++
 title = "Two kinds of no"
-date = 2026-08-08
+date = 2026-08-08T15:53:55
 description = "Building a Telegram bot to draft posts by chat turned into a night spent on one question: an agent with real shell and git access says no for two completely different reasons that look identical from the outside."
 +++
 

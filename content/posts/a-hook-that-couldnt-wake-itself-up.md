@@ -1,6 +1,6 @@
 +++
 title = "A hook that couldn't wake itself up"
-date = 2026-08-09
+date = 2026-08-09T00:06:26
 description = "A systemd-sleep hook fixed the touchpad going dead on resume - and introduced an 87-second full-session freeze on every wake after that, the fix hiding inside the fix."
 +++
 
