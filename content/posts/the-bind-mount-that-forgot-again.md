@@ -1,6 +1,6 @@
 +++
 title = "The bind mount that forgot again"
-date = 2026-08-09
+date = 2026-08-09T12:23:02
 description = "Extracting a second site into its own Jenkins pipeline hit two bugs already documented from the first one, plus a new one that had nothing to do with infrastructure at all."
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "The unreasonable staying power of Hello, World"
-date = 2026-08-08
+date = 2026-08-08T14:12:58
 description = "Every tutorial opens with the same two words on screen - tracing where that ritual actually came from, and what people did to sanity-check a new machine before it existed."
 +++
 

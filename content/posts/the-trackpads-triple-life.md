@@ -1,6 +1,6 @@
 +++
 title = "The trackpad's triple life"
-date = 2026-08-07
+date = 2026-08-07T16:59:44
 description = "Three-finger drag on a Magic Trackpad worked perfectly over Bluetooth, then vanished the instant it switched to USB - same physical device, two completely different identities."
 +++
 
