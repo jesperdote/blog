@@ -1,6 +1,6 @@
 +++
 title = "Recent posts, without the copy-paste"
-date = 2026-08-09
+date = 2026-08-09T13:00:02
 description = "Gave the portfolio site a way to show this blog's latest posts on its own, and hit a GitHub PR that reported itself merged while quietly leaving half the change behind."
 +++
 
