@@ -1,6 +1,7 @@
 +++
 title = "The deploy that kept saying done"
 date = 2026-08-07
+description = "Moving this blog off Netlify to a self-hosted Jenkins pipeline on a BananaPi took four separate bugs, each one hiding behind the last one's fix."
 +++
 
 This site used to deploy to Netlify. I wanted it self-hosted instead, behind the same

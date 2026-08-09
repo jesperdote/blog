@@ -1,6 +1,7 @@
 +++
 title = "A hook that couldn't wake itself up"
 date = 2026-08-09
+description = "A systemd-sleep hook fixed the touchpad going dead on resume - and introduced an 87-second full-session freeze on every wake after that, the fix hiding inside the fix."
 +++
 
 Yesterday I fixed the touchpad going dead after resume — a `systemd-sleep` hook that

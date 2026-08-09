@@ -1,6 +1,7 @@
 +++
 title = "The session that thought it knew the time"
 date = 2026-08-08
+description = "Asked for one more feature at the end of a long session and got a suggestion to stop instead - on knowing when a good idea is actually a bad time for it."
 +++
 
 Tonight's session had already shipped the Telegram bot to the VPS, hardened its

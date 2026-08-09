@@ -63,6 +63,7 @@ still be invisible to visitors for hours.
 | `static/style.css` | The entire stylesheet - minimal, dark, monospace, no JS, no web fonts |
 | `static/klept.ico` | Favicon, reused from the `whoami`/devops-profile site for brand consistency |
 | `nginx.conf` | Production nginx config for the `docker-compose.prod.yml` container (see Deployment) |
+| `templates/atom.xml` | Overrides Zola's built-in feed template to use `page.description` as the entry `<summary>` (falls back to Zola's native `<!-- more -->`-based `page.summary`, then full `page.content`) - see Adding a post |
 
 Template inheritance: `base.html` (header/nav/footer shell) is extended by `index.html` (homepage, latest 10 posts), `section.html` (post listing), and `page.html` (single post). Keep this chain in mind when changing markup - shared structure lives in `base.html` only.
 
@@ -74,10 +75,21 @@ Create `content/posts/my-post-slug.md`:
 +++
 title = "My Post Title"
 date = 2026-07-26
+description = "One or two sentences, written like a punchy hook - not a generic summary."
 +++
 
 Post content here, in Markdown.
 ```
+
+**`description` is required, not optional.** Site-wide feed generation is on
+(`generate_feeds = true` in `config.toml`, output at `/blog/atom.xml`), and `templates/atom.xml`
+is a custom override that uses `page.description` as each entry's `<summary>` - the
+[whoami portfolio](https://github.com/jesperdote/whoami) fetches this feed client-side to
+populate its own "Recent posts" section, so a missing `description` means a bad-looking entry
+over there, not just a bare feed. Without it, the entry falls back to Zola's native
+`<!-- more -->`-marker excerpt (`page.summary`) if one exists in the post body, then to the
+full rendered post as a last resort - neither of which is what you want for a feed reader or
+the portfolio card.
 
 ## Conventions
 

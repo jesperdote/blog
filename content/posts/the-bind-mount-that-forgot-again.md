@@ -1,6 +1,7 @@
 +++
 title = "The bind mount that forgot again"
 date = 2026-08-09
+description = "Extracting a second site into its own Jenkins pipeline hit two bugs already documented from the first one, plus a new one that had nothing to do with infrastructure at all."
 +++
 
 Giving the portfolio site the same treatment as this blog — its own repo, its own Jenkins
