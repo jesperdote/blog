@@ -1,3 +1,13 @@
+def notifySlack(String status, String emoji) {
+    withCredentials([string(credentialsId: 'slack-webhook-url', variable: 'SLACK_WEBHOOK_URL')]) {
+        sh """
+            curl -s -X POST -H 'Content-type: application/json' \\
+                --data '{"text":"${emoji} *${env.JOB_NAME}* #${env.BUILD_NUMBER} ${status}\\n${env.BUILD_URL}"}' \\
+                "\$SLACK_WEBHOOK_URL"
+        """
+    }
+}
+
 pipeline {
     agent none
 
@@ -11,6 +21,13 @@ pipeline {
     }
 
     stages {
+        stage('Notify Start') {
+            agent { label 'vps-host' }
+            steps {
+                script { notifySlack('started', ':large_blue_circle:') }
+            }
+        }
+
         // ghcr.io/getzola/zola only publishes amd64/arm64 images — BananaPi is 32-bit
         // armv7, so the build has to happen on vps-host (amd64) and the result gets
         // handed to bananapi for deploy.
@@ -48,8 +65,16 @@ pipeline {
     }
 
     post {
+        success {
+            node('vps-host') {
+                script { notifySlack('succeeded', ':white_check_mark:') }
+            }
+        }
         failure {
             echo "Deploy failed — check docker compose logs on the BananaPi."
+            node('vps-host') {
+                script { notifySlack('failed', ':x:') }
+            }
         }
     }
 }
