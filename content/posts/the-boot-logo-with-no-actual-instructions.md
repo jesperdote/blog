@@ -1,6 +1,7 @@
 +++
 title = "The boot logo with no actual instructions"
 date = 2026-08-07
+description = "Modding a ThinkPad's boot logo turned out to be well-documented everywhere except the one step that actually mattered."
 +++
 
 Back in May, I decided my ThinkPad T14 Gen 2i should boot into something other than the

@@ -1,6 +1,7 @@
 +++
 title = "Two ways for a touchpad to play dead"
 date = 2026-08-07
+description = "The built-in touchpad went completely dead after a lid close, and it took two separate, stacked bugs to actually explain why."
 +++
 
 Closed the lid, came back a few minutes later, and the built-in touchpad was just gone.

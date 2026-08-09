@@ -1,6 +1,7 @@
 +++
 title = "Two kinds of no"
 date = 2026-08-08
+description = "Building a Telegram bot to draft posts by chat turned into a night spent on one question: an agent with real shell and git access says no for two completely different reasons that look identical from the outside."
 +++
 
 I wanted to be able to write about something after the fact without reopening the laptop

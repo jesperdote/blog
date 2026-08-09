@@ -53,7 +53,12 @@ Create `content/posts/my-post-slug.md`:
 +++
 title = "My Post Title"
 date = 2026-07-26
+description = "One or two sentences, written like a punchy hook."
 +++
 
 Post content here, in Markdown.
 ```
+
+`description` powers the site's Atom feed (`/blog/atom.xml`), which the
+[whoami portfolio](https://github.com/jesperdote/whoami) fetches to show recent posts - see
+`CLAUDE.md` for details.

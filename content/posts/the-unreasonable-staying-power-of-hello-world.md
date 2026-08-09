@@ -1,6 +1,7 @@
 +++
 title = "The unreasonable staying power of Hello, World"
 date = 2026-08-08
+description = "Every tutorial opens with the same two words on screen - tracing where that ritual actually came from, and what people did to sanity-check a new machine before it existed."
 +++
 
 Every programming tutorial ever written opens the same way. Before loops, before

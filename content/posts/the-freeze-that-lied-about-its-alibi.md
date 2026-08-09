@@ -1,6 +1,7 @@
 +++
 title = "The freeze that lied about its alibi"
 date = 2026-07-25
+description = "A ThinkPad froze mid-session with zero log trail - traced through disabled kernel lockup watchdogs to a driver crash that had nowhere to leave a note."
 +++
 
 My ThinkPad had been freezing during active use. Not on suspend, not overnight — mid-session,
